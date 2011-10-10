@@ -2,9 +2,18 @@ require 'spec_helper'
 
 describe Kurli::Course do
 
-  # {code: '582336',name: {fi: 'Introduction to Go',en: 'Introduction to Go',se: 'Introduction to Go',},credits: '3',level: 'C'},
+  before(:each) do
+    @code = '12345'
+    @name = [:fi => 'suomi', :se => 'svenska', :en => 'english']
+    @credits = '6'
+    @level = 'L'
 
-  it "should have code"
+    @course = Kurli::Course.new @code, @name, @credits, @level
+  end
+
+  it "should have code" do
+    @course.code.should == @code
+  end
 
   describe "name" do
 
@@ -16,8 +25,44 @@ describe Kurli::Course do
 
   end
 
-  it "should have credits"
+  it "should have credits" do
+    @course.credits.should == @credits
+  end
 
-  it "should have level"
+  describe "level" do
+
+    it "should know basic course" do
+      course = Kurli::Course.new @code, @name, @credits, 'A'
+      course.should be_basic
+      course.should_not be_intermediate
+      course.should_not be_advanced
+      course.should_not be_other
+    end
+
+    it "should know intermediate course" do
+      course = Kurli::Course.new @code, @name, @credits, 'C'
+      course.should_not be_basic
+      course.should be_intermediate
+      course.should_not be_advanced
+      course.should_not be_other
+    end
+
+    it "should know advanced course" do
+      course = Kurli::Course.new @code, @name, @credits, 'L'
+      course.should_not be_basic
+      course.should_not be_intermediate
+      course.should be_advanced
+      course.should_not be_other
+    end
+
+    it "should know advanced course" do
+      course = Kurli::Course.new @code, @name, @credits, 'O'
+      course.should_not be_basic
+      course.should_not be_intermediate
+      course.should_not be_advanced
+      course.should be_other
+    end
+
+  end
 
 end
