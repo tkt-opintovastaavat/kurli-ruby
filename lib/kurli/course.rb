@@ -7,6 +7,11 @@ module Kurli
       @code = code
       @credits = credits
       @level = level
+      @name = name
+    end
+
+    def name(lang)
+      @name[lang]
     end
 
     def basic?

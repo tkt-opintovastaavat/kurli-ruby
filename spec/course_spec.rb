@@ -4,7 +4,7 @@ describe Kurli::Course do
 
   before(:each) do
     @code = '12345'
-    @name = [:fi => 'suomi', :se => 'svenska', :en => 'english']
+    @name = {:fi => 'suomi', :se => 'svenska', :en => 'english'}
     @credits = '6'
     @level = 'L'
 
@@ -17,11 +17,17 @@ describe Kurli::Course do
 
   describe "name" do
 
-    it "should be in Finnish"
+    it "should be in Finnish" do
+      @course.name(:fi).should == @name[:fi]
+    end
 
-    it "should be in Swedish"
+    it "should be in Swedish" do
+      @course.name(:se).should == @name[:se]
+    end
 
-    it "should be in English"
+    it "should be in English" do
+      @course.name(:en).should == @name[:en]
+    end
 
   end
 
