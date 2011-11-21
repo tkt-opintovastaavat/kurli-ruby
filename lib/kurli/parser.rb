@@ -13,11 +13,11 @@ module Kurli
     private
 
     def parse_course(data)
-      Kurli::Course.new(data["code"],
-                        parse_name(data["name"]),
-                        data["credits"],
-                        data["level"]
-                       )
+      ::Kurli::Course.new(data["code"],
+                          parse_name(data["name"]),
+                          data["credits"],
+                          data["level"]
+                         )
     end
 
     def parse_name(name_data)
