@@ -10,6 +10,12 @@ module Kurli
       @server = ::Kurli::Server.new(uri)
     end
 
+    def perform
+      data = @server.get
+      parser = ::Kurli::Parser.new(data)
+      parser.fetch
+    end
+
   end
 
 end
