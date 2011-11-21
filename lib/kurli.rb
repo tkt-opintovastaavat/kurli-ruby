@@ -13,7 +13,7 @@ module Kurli
     def perform
       data = @server.get
       parser = ::Kurli::Parser.new(data)
-      parser.fetch
+      parser.fetch_courses
     end
 
   end

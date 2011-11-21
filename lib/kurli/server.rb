@@ -6,6 +6,7 @@ module Kurli
     end
 
     def get
+      require 'net/http'
       Net::HTTP.get(URI.parse(@path))
     end
 

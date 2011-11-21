@@ -21,7 +21,7 @@ describe Kurli do
 
     @server_mock.should_receive(:get).and_return(course_data)
     Kurli::Parser.should_receive(:new).with(course_data).and_return(parser_mock)
-    parser_mock.should_receive(:fetch).and_return(courses_mock)
+    parser_mock.should_receive(:fetch_courses).and_return(courses_mock)
     @kurli.perform.should == courses_mock
   end
 

@@ -2,6 +2,7 @@ module Kurli
   class Parser
 
     def initialize(data_string)
+      require 'rubygems'
       require 'json'
       @json = JSON.parse(data_string)
     end
