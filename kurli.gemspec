@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "kurli/version"
 
 Gem::Specification.new do |s|
-  s.name        = "kurli-ruby"
+  s.name        = "kurli"
   s.version     = Kurli::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Sami Saada"]
